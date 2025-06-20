@@ -28,7 +28,7 @@ def login():
                     user = profile_resp.json()
                     st.session_state.user_id = user["id"]
                 else:
-                    st.session_state.user_id = None
+                st.session_state.user_id = None
                 st.success("Logged in successfully!")
                 st.experimental_rerun()  # Refresh to show sidebar
             else:
@@ -116,8 +116,8 @@ def view_all_users():
                 st.write(f"ID: {user['id']}, Name: {user['name']}, Email: {user['email']}")
         else:
             st.error(response.json().get("detail", "Error fetching users"))
-    except requests.RequestException as e:
-        st.error(f"Failed to connect to the server: {e}")
+        except requests.RequestException as e:
+            st.error(f"Failed to connect to the server: {e}")
 
 def update_profile():
     st.subheader("Update Profile")
@@ -302,14 +302,14 @@ def user_dashboard():
                 st.error(f"Failed to connect to the server: {e}")
         else:
             st.error("User ID not found in session. Please log in again.")
-    elif option == "Update Profile":
-        update_profile()
-    elif option == "Delete Profile":
-        delete_profile()
-    elif option == "Logout":
-        st.session_state.clear()
-        st.success("Logged out successfully!")
-        st.experimental_rerun()
+        elif option == "Update Profile":
+            update_profile()
+        elif option == "Delete Profile":
+            delete_profile()
+        elif option == "Logout":
+            st.session_state.clear()
+            st.success("Logged out successfully!")
+            st.experimental_rerun()
 
 def main():
     st.title("Online Identity Verification System")
