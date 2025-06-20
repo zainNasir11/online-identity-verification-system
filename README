@@ -1,0 +1,3 @@
+# Online Identity Verification System
+
+This project implements a secure online identity verification system for fintech platforms, as part of the CYC-386 Secure Software Development lab final exam. It includes a FastAPI backend, Streamlit frontend, and Dockerized deployment.
